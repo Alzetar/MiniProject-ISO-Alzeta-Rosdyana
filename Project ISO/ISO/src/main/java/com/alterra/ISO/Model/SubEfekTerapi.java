@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-
+@Entity
 public class SubEfekTerapi {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
