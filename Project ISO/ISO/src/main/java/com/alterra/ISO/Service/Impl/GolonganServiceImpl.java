@@ -5,6 +5,7 @@ import com.alterra.ISO.Model.GolonganObat;
 import com.alterra.ISO.Model.ObatGenerik;
 import com.alterra.ISO.Repository.GolonganRepository;
 import com.alterra.ISO.Service.GolonganService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class GolonganServiceImpl implements GolonganService {
     @Autowired
     private GolonganRepository golonganRepository;

@@ -4,6 +4,7 @@ import com.alterra.ISO.Model.Obat;
 import com.alterra.ISO.Model.ObatGenerik;
 import com.alterra.ISO.Repository.GenerikRepository;
 import com.alterra.ISO.Service.GenerikService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class GenerikServiceImpl implements GenerikService {
     @Autowired
     private GenerikRepository generikRepository;

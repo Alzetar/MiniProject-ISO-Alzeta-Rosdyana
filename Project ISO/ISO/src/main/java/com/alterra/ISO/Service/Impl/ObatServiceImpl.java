@@ -3,6 +3,7 @@ package com.alterra.ISO.Service.Impl;
 import com.alterra.ISO.Model.Obat;
 import com.alterra.ISO.Repository.ObatRepository;
 import com.alterra.ISO.Service.ObatService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class ObatServiceImpl implements ObatService {
     @Autowired
     private ObatRepository obatRepository;
