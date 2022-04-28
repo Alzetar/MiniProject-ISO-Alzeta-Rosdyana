@@ -3,6 +3,7 @@ package com.alterra.ISO.Model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -14,6 +15,5 @@ public class EfekTerapi {
     private String deskripsi_efek_terapi;
 
     @OneToMany
-    @JoinColumn(name = "id_sub_efek", nullable = false)
-    private SubEfekTerapi subEfekTerapi;
+    private Set<SubEfekTerapi> subEfekTerapi;
 }

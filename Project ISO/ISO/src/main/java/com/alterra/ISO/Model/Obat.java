@@ -3,6 +3,7 @@ package com.alterra.ISO.Model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -16,15 +17,15 @@ public class Obat {
     private String efek_samping;
     private String dosis;
 
-    @ManyToOne
-    @JoinColumn(name = "id_efek_terapi", nullable = false)
-    private EfekTerapi efekTerapi;
+//    @ManyToOne
+//    @JoinColumn(name = "id_efek_terapi", nullable = false)
+//    private EfekTerapi efekTerapi;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "id_golongan", nullable = false)
+//    private GolonganObat golonganObat;
 
-    @ManyToOne
-    @JoinColumn(name = "id_golongan", nullable = false)
-    private GolonganObat golonganObat;
-
-    @OneToMany
+    @ManyToMany
     @JoinColumn(name = "id_generik", nullable = false)
-    private ObatGenerik obatGenerik;
+    private Set<ObatGenerik> obatGenerik;
 }
