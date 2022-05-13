@@ -1,9 +1,0 @@
-package com.alterra.ISO.Repository;
-
-import com.alterra.ISO.Model.SubEfekTerapi;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface SubTerapiRepository extends JpaRepository<SubEfekTerapi, Integer> {
-}
