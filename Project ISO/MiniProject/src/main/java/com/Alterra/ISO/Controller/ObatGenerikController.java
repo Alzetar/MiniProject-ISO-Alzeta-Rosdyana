@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,15 +27,23 @@ public class ObatGenerikController {
         return ResponseEntity.ok(obatGenerikList);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> generikById(@PathVariable("id") Integer id){
-        try {
-            ObatGenerik obatGenerik = generikService.findByIdGenerik(id);
-            return ResponseEntity.ok(obatGenerik);
-        } catch (Exception e) {
-            InternalError internalError = new InternalError(e.getMessage());
-            return ResponseEntity.internalServerError().body(internalError);
+
+//    public ResponseEntity<?> generikById(@PathVariable("id") Integer id){
+//        try {
+//            ObatGenerik obatGenerik = generikService.findByIdGenerik(id);
+//            return ResponseEntity.ok(obatGenerik);
+//        } catch (Exception e) {
+//            InternalError internalError = new InternalError(e.getMessage());
+//            return ResponseEntity.internalServerError().body(internalError);
+//        }
+    public List<ObatGenerik> generikById(@RequestParam (required = false) Integer id) {
+        if (id == null){
+            return generikService.findAllObatGenerik();
         }
+        List<ObatGenerik> foundGenerik = new ArrayList<>();
+        ObatGenerik obatGenerik = generikService.findByIdGenerik(id);
+        foundGenerik.add(obatGenerik);
+        return foundGenerik;
     }
 
     @PatchMapping("/{id}")
