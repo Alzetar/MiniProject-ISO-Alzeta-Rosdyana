@@ -1,6 +1,10 @@
 package com.Alterra.ISO.Service.Impl;
 
+import com.Alterra.ISO.DTO.AddToObatDto;
+import com.Alterra.ISO.Model.EfekTerapi;
+import com.Alterra.ISO.Model.GolonganObat;
 import com.Alterra.ISO.Model.Obat;
+import com.Alterra.ISO.Model.ObatGenerik;
 import com.Alterra.ISO.Repository.ObatRepository;
 import com.Alterra.ISO.Service.ObatService;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +22,37 @@ public class ObatServiceImpl implements ObatService {
     @Autowired
     private ObatRepository obatRepository;
 
+    @Autowired
+    private EfekTerapiServiceImpl efekTerapiService;
+
+    @Autowired
+    private GolonganObatServiceImpl golonganObatService;
+
+    @Autowired
+    private ObatGenerikServiceImpl obatGenerikService;
+
+//    public Obat create(Obat obat) {
+//        return obatRepository.save(obat);
+//    }
     @Override
-    public Obat create(Obat obat) {
+    public Obat create(AddToObatDto addToObatDto){
+        EfekTerapi efekTerapi = efekTerapiService.findById(addToObatDto.getIdEfekTerapi());
+        GolonganObat golonganObat = golonganObatService.findByIdGolObat(addToObatDto.getIdEfekTerapi());
+        ObatGenerik obatGenerik = obatGenerikService.findByIdGenerik(addToObatDto.getIdEfekTerapi());
+
+        Obat obat = new Obat();
+        obat.setEfekTerapi(efekTerapi);
+        obat.setGolonganObat(golonganObat);
+        obat.setObatGenerik(obatGenerik);
+        obat.setNamaObat(addToObatDto.getNamaObat());
+        obat.setIndikasi(addToObatDto.getIndikasi());
+        obat.setKontraIndikasi(addToObatDto.getKontraIndikasi());
+        obat.setEfekSamping(addToObatDto.getEfekSamping());
+        obat.setDosis(addToObatDto.getDosis());
+
         return obatRepository.save(obat);
     }
+
 
     @Override
     public List<Obat> findAll() {

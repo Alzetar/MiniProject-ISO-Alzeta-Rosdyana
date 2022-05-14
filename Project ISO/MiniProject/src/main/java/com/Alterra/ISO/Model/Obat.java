@@ -1,5 +1,6 @@
 package com.Alterra.ISO.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,20 +11,24 @@ import java.util.Set;
 @Table(name = "obat")
 public class Obat {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", nullable = false)
     private Integer id;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id_Efek_Terapi")
-    private EfekTerapi idEfekTerapi;
+    private EfekTerapi efekTerapi;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id_Golongan_obat")
-    private GolonganObat idGolonganObat;
+    private GolonganObat golonganObat;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id_Obat_Generik")
-    private ObatGenerik idObatGenerik;
+    private ObatGenerik obatGenerik;
 
     @Column(name = "Nama_Obat", length = 75)
     private String namaObat;

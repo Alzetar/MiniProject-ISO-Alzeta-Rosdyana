@@ -1,8 +1,10 @@
 package com.Alterra.ISO.Controller;
 
+import com.Alterra.ISO.DTO.AddToObatDto;
 import com.Alterra.ISO.Model.Obat;
 import com.Alterra.ISO.Service.ObatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +16,16 @@ public class ObatController {
     @Autowired
     private ObatService obatService;
 
+//    @PostMapping
+//    public ResponseEntity<?> createObat(@RequestBody Obat obat){
+//        Obat obatCreate = obatService.create(obat);
+//        return ResponseEntity.ok(obatCreate);
+//    }
+
     @PostMapping
-    public ResponseEntity<?> createObat(@RequestBody Obat obat){
-        Obat obatCreate = obatService.create(obat);
-        return ResponseEntity.ok(obatCreate);
+    public ResponseEntity<?> createObat(@RequestBody AddToObatDto addToObatDto){
+        obatService.create(addToObatDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping

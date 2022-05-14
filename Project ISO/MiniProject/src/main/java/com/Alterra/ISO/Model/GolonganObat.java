@@ -2,16 +2,14 @@ package com.Alterra.ISO.Model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "golongan_obat")
 public class GolonganObat {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", nullable = false)
     private Integer id;
 
@@ -19,6 +17,6 @@ public class GolonganObat {
     private String namaGolongan;
 
     @Column(name = "Deskripsi_Golongan")
-    private Character deskripsiGolongan;
+    private String deskripsiGolongan;
 
 }

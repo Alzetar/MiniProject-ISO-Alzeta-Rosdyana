@@ -47,4 +47,15 @@ public class GolonganObatController {
             return ResponseEntity.internalServerError().body(internalError);
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteGolonganObat(@PathVariable("id") Integer id) {
+        try {
+            golonganObatService.deleteGolObat(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            InternalError internalError = new InternalError(e.getMessage());
+            return ResponseEntity.internalServerError().body(internalError);
+        }
+    }
 }

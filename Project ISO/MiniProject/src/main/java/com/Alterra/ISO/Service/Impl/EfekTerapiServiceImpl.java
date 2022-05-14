@@ -30,9 +30,12 @@ public class EfekTerapiServiceImpl implements EfekTerapiService {
 
     @Override
     public EfekTerapi findById(Integer id) {
-        EfekTerapi efekTerapi = new EfekTerapi();
-        efekTerapi = efekTerapiRepository.findById(id).orElse(null);
-        return efekTerapi;
+        Optional<EfekTerapi> optionalEfekTerapi = efekTerapiRepository.findById(id);
+        if (optionalEfekTerapi.isEmpty()) {
+            log.warn("Cannot find efek terapi with {} because not found", id);
+            return null;
+        }
+        return optionalEfekTerapi.get();
     }
 
     @Override

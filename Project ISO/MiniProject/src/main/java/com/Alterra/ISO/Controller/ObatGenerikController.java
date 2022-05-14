@@ -27,15 +27,6 @@ public class ObatGenerikController {
         return ResponseEntity.ok(obatGenerikList);
     }
 
-
-//    public ResponseEntity<?> generikById(@PathVariable("id") Integer id){
-//        try {
-//            ObatGenerik obatGenerik = generikService.findByIdGenerik(id);
-//            return ResponseEntity.ok(obatGenerik);
-//        } catch (Exception e) {
-//            InternalError internalError = new InternalError(e.getMessage());
-//            return ResponseEntity.internalServerError().body(internalError);
-//        }
     public List<ObatGenerik> generikById(@RequestParam (required = false) Integer id) {
         if (id == null){
             return generikService.findAllObatGenerik();
@@ -45,6 +36,18 @@ public class ObatGenerikController {
         foundGenerik.add(obatGenerik);
         return foundGenerik;
     }
+
+
+//    @GetMapping
+//    public ResponseEntity<?> generikById(@PathVariable("id") Integer id) {
+//        try {
+//            ObatGenerik obatGenerik = generikService.findByIdGenerik(id);
+//            return ResponseEntity.ok(obatGenerik);
+//        } catch (Exception e) {
+//            InternalError internalError = new InternalError(e.getMessage());
+//            return ResponseEntity.internalServerError().body(internalError);
+//        }
+//    }
 
     @PatchMapping("/{id}")
     public ResponseEntity<?> updateObatGenerik(@PathVariable("id") Integer id, @RequestBody ObatGenerik obatGenerik){

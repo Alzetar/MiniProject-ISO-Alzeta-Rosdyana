@@ -1,5 +1,6 @@
 package com.Alterra.ISO.Service.Impl;
 
+import com.Alterra.ISO.Model.GolonganObat;
 import com.Alterra.ISO.Model.ObatGenerik;
 import com.Alterra.ISO.Repository.ObatGenerikRepository;
 import com.Alterra.ISO.Service.ObatGenerikService;
@@ -28,9 +29,19 @@ public class ObatGenerikServiceImpl implements ObatGenerikService {
         return (List<ObatGenerik>) generikRepository.findAll();
     }
 
+//    @Override
+//    public ObatGenerik findByIdGenerik(Integer id) {
+//        return generikRepository.findById(id).orElse(null);
+//    }
+
     @Override
     public ObatGenerik findByIdGenerik(Integer id) {
-        return generikRepository.findById(id).orElse(null);
+        Optional<ObatGenerik> optionalObatGenerik = generikRepository.findById(id);
+        if (optionalObatGenerik.isEmpty()) {
+            log.warn("Cannot find obat Generik with {} because not found", id);
+            return null;
+        }
+        return optionalObatGenerik.get();
     }
 
     @Override

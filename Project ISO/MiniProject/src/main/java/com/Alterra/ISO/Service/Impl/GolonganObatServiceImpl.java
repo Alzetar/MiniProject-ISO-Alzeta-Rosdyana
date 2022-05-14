@@ -1,5 +1,6 @@
 package com.Alterra.ISO.Service.Impl;
 
+import com.Alterra.ISO.Model.EfekTerapi;
 import com.Alterra.ISO.Model.GolonganObat;
 import com.Alterra.ISO.Repository.GolonganObatRepository;
 import com.Alterra.ISO.Service.GolonganObatService;
@@ -28,9 +29,19 @@ public class GolonganObatServiceImpl implements GolonganObatService {
         return (List<GolonganObat>) golonganObatRepository.findAll();
     }
 
+//    @Override
+//    public GolonganObat findByIdGolObat(Integer id) {
+//        return golonganObatRepository.findById(id).orElse(null);
+//    }
+
     @Override
     public GolonganObat findByIdGolObat(Integer id) {
-        return golonganObatRepository.findById(id).orElse(null);
+        Optional<GolonganObat> optionalGolonganObat = golonganObatRepository.findById(id);
+        if (optionalGolonganObat.isEmpty()) {
+            log.warn("Cannot find Golongan oba with {} because not found", id);
+            return null;
+        }
+        return optionalGolonganObat.get();
     }
 
     @Override
