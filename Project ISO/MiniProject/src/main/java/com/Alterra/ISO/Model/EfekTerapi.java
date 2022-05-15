@@ -3,7 +3,6 @@ package com.Alterra.ISO.Model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Data
 @Entity
