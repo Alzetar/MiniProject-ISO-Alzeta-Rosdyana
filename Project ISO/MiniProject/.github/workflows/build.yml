@@ -1,0 +1,30 @@
+name: Spring Actions Github
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Starting building application"
+      - uses: actions/checkout@v2
+      - name: Setup OpenJDK
+        uses: actions/checkout@v2
+        with:
+          java-version:"11"
+          distribution:"adopt"
+      - name: Maven clean
+        run: mvn -batch-mode --update-snapshots clean install
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Start packaging application"
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          java-version:"11"
+          distribution:"adopt"
+      - name: Package application
+        run: mvn -batch-mode --update-snapshots package
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Starting deployment apllication"
