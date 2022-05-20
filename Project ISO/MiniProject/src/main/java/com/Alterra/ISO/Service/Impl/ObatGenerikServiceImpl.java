@@ -21,6 +21,7 @@ public class ObatGenerikServiceImpl implements ObatGenerikService {
 
     @Override
     public ObatGenerik createGenerik(ObatGenerik generik) {
+//        generik.setNamaObatGenerik(generik.getNamaObatGenerik());
         return generikRepository.save(generik);
     }
 

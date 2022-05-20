@@ -4,7 +4,6 @@ import com.Alterra.ISO.DTO.AddToObatDto;
 import com.Alterra.ISO.Model.Obat;
 import com.Alterra.ISO.Service.ObatService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +22,9 @@ public class ObatController {
 //    }
 
     @PostMapping
-    public ResponseEntity<?> createObat(@RequestBody AddToObatDto addToObatDto){
+    public ResponseEntity.BodyBuilder createObat(@RequestBody AddToObatDto addToObatDto){
         obatService.create(addToObatDto);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseEntity.ok();
     }
 
     @GetMapping

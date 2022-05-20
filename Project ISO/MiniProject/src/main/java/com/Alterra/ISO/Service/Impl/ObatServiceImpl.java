@@ -31,19 +31,22 @@ public class ObatServiceImpl implements ObatService {
     @Autowired
     private ObatGenerikServiceImpl obatGenerikService;
 
+//    @Override
 //    public Obat create(Obat obat) {
 //        return obatRepository.save(obat);
 //    }
     @Override
     public Obat create(AddToObatDto addToObatDto){
-        EfekTerapi efekTerapi = efekTerapiService.findById(addToObatDto.getIdEfekTerapi());
-        GolonganObat golonganObat = golonganObatService.findByIdGolObat(addToObatDto.getIdEfekTerapi());
-        ObatGenerik obatGenerik = obatGenerikService.findByIdGenerik(addToObatDto.getIdEfekTerapi());
+
+//        EfekTerapi efekTerapi = efekTerapiService.findById(addToObatDto.getIdEfekTerapi());
+//        GolonganObat golonganObat = golonganObatService.findByIdGolObat(addToObatDto.getIdEfekTerapi());
+//        ObatGenerik obatGenerik = obatGenerikService.findByIdGenerik(addToObatDto.getIdEfekTerapi());
 
         Obat obat = new Obat();
-        obat.setEfekTerapi(efekTerapi);
-        obat.setGolonganObat(golonganObat);
-        obat.setObatGenerik(obatGenerik);
+//        obat.setEfekTerapi(addToObatDto.getIdEfekTerapi());
+//        obat.setGolonganObat(addToObatDto.getIdGolonganObat());
+//        obat.setObatGenerik(addToObatDto.getIdObatGenerik());
+//        obat.setId(obat.getId());
         obat.setNamaObat(addToObatDto.getNamaObat());
         obat.setIndikasi(addToObatDto.getIndikasi());
         obat.setKontraIndikasi(addToObatDto.getKontraIndikasi());

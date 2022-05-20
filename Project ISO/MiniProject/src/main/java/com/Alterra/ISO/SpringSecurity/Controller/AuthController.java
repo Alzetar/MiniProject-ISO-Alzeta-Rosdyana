@@ -29,7 +29,6 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> generateToken(@RequestBody UsernamePassword req){
         TokenResponse token = authService.generateToken(req);
-        // Response response = Response.builder().data(token).build();
         Map<String, Object> response = new HashMap<>();
         response.put("data", token);
         return ResponseEntity.ok(response);
