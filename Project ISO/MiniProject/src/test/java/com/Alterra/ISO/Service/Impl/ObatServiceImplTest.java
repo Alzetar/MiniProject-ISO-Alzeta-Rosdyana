@@ -6,9 +6,12 @@ import com.Alterra.ISO.Repository.ObatRepository;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
+@RunWith(MockitoJUnitRunner.class)
+@SpringBootTest(classes = ObatServiceImpl.class)
 class ObatServiceImplTest {
 
     private final EasyRandom easyRandom = new EasyRandom();

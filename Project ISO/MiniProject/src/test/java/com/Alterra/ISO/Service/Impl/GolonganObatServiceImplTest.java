@@ -5,9 +5,12 @@ import com.Alterra.ISO.Repository.GolonganObatRepository;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
+@RunWith(MockitoJUnitRunner.class)
+@SpringBootTest(classes = GolonganObatServiceImpl.class)
 class GolonganObatServiceImplTest {
 
     private final EasyRandom easyRandom = new EasyRandom();

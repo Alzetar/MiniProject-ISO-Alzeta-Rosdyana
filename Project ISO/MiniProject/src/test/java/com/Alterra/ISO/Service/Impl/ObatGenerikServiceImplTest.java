@@ -5,9 +5,14 @@ import com.Alterra.ISO.Repository.ObatGenerikRepository;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +22,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
+@RunWith(MockitoJUnitRunner.class)
+@SpringBootTest(classes = ObatGenerikServiceImpl.class)
 class ObatGenerikServiceImplTest {
 
     private final EasyRandom easyRandom = new EasyRandom();
@@ -33,6 +40,7 @@ class ObatGenerikServiceImplTest {
         MockitoAnnotations.initMocks(this);
         id = easyRandom.nextInt();
     }
+
 
     @Test
     public void createGenerik() {

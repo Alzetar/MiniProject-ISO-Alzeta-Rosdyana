@@ -11,7 +11,7 @@ import java.util.Set;
 @Table(name = "obat")
 public class Obat {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", nullable = false)
     private Integer id;
 
@@ -30,19 +30,19 @@ public class Obat {
     @JoinColumn(name = "Id_Obat_Generik")
     private ObatGenerik obatGenerik;
 
-    @Column(name = "Nama_Obat", length = 75)
+    @Column(name = "Nama_Obat")
     private String namaObat;
 
-    @Column(name = "Indikasi", length = 100)
+    @Column(name = "Indikasi")
     private String indikasi;
 
-    @Column(name = "Kontra_Indikasi", length = 75)
+    @Column(name = "Kontra_Indikasi")
     private String kontraIndikasi;
 
-    @Column(name = "Efek_Samping", length = 100)
+    @Column(name = "Efek_Samping")
     private String efekSamping;
 
-    @Column(name = "Dosis", length = 50)
+    @Column(name = "Dosis")
     private String dosis;
 
 

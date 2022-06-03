@@ -1,6 +1,7 @@
 package com.Alterra.ISO.Service;
 
 import com.Alterra.ISO.Model.ObatGenerik;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

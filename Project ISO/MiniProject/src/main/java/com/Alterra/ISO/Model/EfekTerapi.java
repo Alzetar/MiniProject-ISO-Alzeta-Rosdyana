@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "efek_terapi")
 public class EfekTerapi {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", nullable = false)
     private Integer id;
 

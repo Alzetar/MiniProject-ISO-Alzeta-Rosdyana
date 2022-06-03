@@ -10,7 +10,7 @@ import java.util.Set;
 @Table(name = "obat_generik")
 public class ObatGenerik {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", nullable = false)
     private Integer id;
 
