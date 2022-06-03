@@ -1,0 +1,30 @@
+
+name: Deploy
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    name : Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+      
+    - name: Deploy to Heroku
+      uses: AkhileshNS/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_email: ${{secrets.HEROKU_EMAIL}}
+        heroku_app_name: ${{secrets.HEROKU_APP}}
+        dontuseforce: true
+        dontautocreate: true
